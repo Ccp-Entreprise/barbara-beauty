@@ -317,12 +317,91 @@
     @media (max-width: 768px) {
       .formations-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-burger { display: flex; }
       .info-band { gap: 30px; }
       .footer-top { flex-direction: column; }
+    }
+    .nav-burger {
+      display: none;
+      background: transparent; border: none; cursor: pointer;
+      padding: 8px; flex-direction: column; gap: 4px;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--black); border-radius: 2px;
+    }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 300;
+      background: var(--black); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu-close {
+      position: absolute; top: 24px; right: 24px;
+      background: transparent; border: none; color: var(--white);
+      font-size: 2.5rem; cursor: pointer; line-height: 1;
+    }
+    .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .mobile-menu-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; color: var(--white);
+      text-decoration: none; font-weight: 400;
+    }
+    .mobile-menu-links a:hover { color: var(--gold-light); }
+    .mobile-menu-cta {
+      background: var(--gold); color: var(--black) !important;
+      padding: 14px 32px; border-radius: 50px;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.88rem !important; font-weight: 600 !important;
+      letter-spacing: 1px; text-transform: uppercase; margin-top: 12px;
     }
   </style>
 </head>
 <body>
+
+<!-- ── PASSWORD GATE ── -->
+<div id="password-gate" style="
+  position:fixed; inset:0; z-index:9999;
+  background:#0D0D0D;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;
+">
+  <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:#fff; letter-spacing:0.08em;">BARBARA <span style="font-style:italic;color:#D4BC9A;">beauty</span></div>
+  <p style="font-family:'Inter',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.4); letter-spacing:0.15em; text-transform:uppercase;">Site en cours de finalisation</p>
+  <div style="display:flex; gap:0; border:1px solid rgba(255,255,255,0.15); border-radius:40px; overflow:hidden; margin-top:8px;">
+    <input id="gate-input" type="password" placeholder="Mot de passe" style="
+      background:transparent; border:none; outline:none;
+      padding:14px 24px; color:#fff; font-family:'Inter',sans-serif; font-size:0.85rem;
+      width:220px;
+    " />
+    <button onclick="checkGate()" style="
+      background:#D4BC9A; border:none; cursor:pointer;
+      padding:14px 24px; font-family:'Inter',sans-serif; font-size:0.8rem;
+      color:#0D0D0D; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    ">Entrer</button>
+  </div>
+  <p id="gate-error" style="font-family:'Inter',sans-serif; font-size:0.78rem; color:#c0392b; display:none;">Mot de passe incorrect</p>
+</div>
+<script>
+  (function() {
+    if (sessionStorage.getItem('bb_access') === '1') {
+      document.getElementById('password-gate').style.display = 'none';
+    }
+    document.getElementById('gate-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkGate();
+    });
+  })();
+  function checkGate() {
+    if (document.getElementById('gate-input').value === 'barbara2026') {
+      sessionStorage.setItem('bb_access', '1');
+      document.getElementById('password-gate').style.display = 'none';
+    } else {
+      document.getElementById('gate-error').style.display = 'block';
+      document.getElementById('gate-input').value = '';
+    }
+  }
+</script>
 
 <!-- ── NAV ── -->
 <div class="nav-wrap">
@@ -335,11 +414,35 @@
       <a href="formation.html">Formation</a>
       <a href="serenique-lash.html#about">À propos</a>
       <a href="serenique-lash.html#tarifs">Tarifs</a>
-      <a href="serenique-lash.html#contact">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <a class="nav-cta" href="mailto:barbarabeauty.formation@gmail.com">Nous contacter</a>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a class="nav-cta" href="https://barbarabeauty13.booksy.com/a/" target="_blank">Prendre RDV</a>
+      <button class="nav-burger" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 </div>
+
+<!-- ── MOBILE MENU ── -->
+<div id="mobile-menu" class="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Fermer">&times;</button>
+  <div class="mobile-menu-links">
+    <a href="serenique-lash.html#services" onclick="toggleMobileMenu()">Services</a>
+    <a href="formation.html" onclick="toggleMobileMenu()">Formation</a>
+    <a href="serenique-lash.html#about" onclick="toggleMobileMenu()">À propos</a>
+    <a href="serenique-lash.html#tarifs" onclick="toggleMobileMenu()">Tarifs</a>
+    <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
+    <a class="mobile-menu-cta" href="https://barbarabeauty13.booksy.com/a/" target="_blank">Prendre RDV</a>
+  </div>
+</div>
+<script>
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('mobile-menu').classList.contains('open') ? 'hidden' : '';
+  }
+</script>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -630,7 +733,7 @@
         <li><a href="serenique-lash.html">Accueil</a></li>
         <li><a href="serenique-lash.html#services">Services</a></li>
         <li><a href="serenique-lash.html#about">À propos</a></li>
-        <li><a href="serenique-lash.html#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
