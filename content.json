@@ -64,7 +64,7 @@
   "pricing": [
     {
       "category": "Extensions de Cils",
-      "icon": "✨",
+      "icon": "",
       "items": [
         {
           "name": "Cil à cil — Pose complète",
@@ -105,7 +105,7 @@
     },
     {
       "category": "Rehaussement de Cils",
-      "icon": "👁️",
+      "icon": "",
       "items": [
         {
           "name": "Lash Lift",
@@ -126,7 +126,7 @@
     },
     {
       "category": "Sourcils",
-      "icon": "🌿",
+      "icon": "",
       "items": [
         {
           "name": "Brow Lift",
@@ -147,7 +147,7 @@
     },
     {
       "category": "Onglerie",
-      "icon": "💅",
+      "icon": "",
       "items": [
         {
           "name": "Vernis Semi-Permanent",
