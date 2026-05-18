@@ -136,25 +136,21 @@
     .hero-title em { font-style: italic; color: var(--gold-light); }
     .hero-btns { display: flex; gap: 16px; align-items: center; }
     .btn-pill-light {
-      display: inline-flex; align-items: center; gap: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
       background: var(--white); color: var(--black);
-      border: none; border-radius: 50px; padding: 14px 24px 14px 28px;
+      border: none; border-radius: 50px;
+      padding: 14px 32px; min-width: 200px;
       font-size: 0.85rem; font-weight: 600; cursor: pointer;
       font-family: 'Inter', sans-serif; transition: all 0.3s;
       text-decoration: none;
     }
     .btn-pill-light:hover { background: var(--beige); }
-    .btn-pill-light .arrow {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: var(--black); color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem;
-    }
     .btn-pill-outline {
-      display: inline-flex; align-items: center; gap: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
       background: transparent; border: 1.5px solid rgba(255,255,255,0.5);
-      border-radius: 50px; padding: 14px 28px;
-      color: var(--white); font-size: 0.85rem; font-weight: 500;
+      border-radius: 50px;
+      padding: 14px 32px; min-width: 200px;
+      color: var(--white); font-size: 0.85rem; font-weight: 600;
       cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.3s;
       text-decoration: none;
     }
@@ -432,25 +428,20 @@
     }
     .formation-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     .btn-gold {
-      display: inline-flex; align-items: center; gap: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
       background: var(--gold); color: var(--white);
-      border: none; border-radius: 50px; padding: 16px 28px 16px 32px;
-      font-size: 0.88rem; font-weight: 600; cursor: pointer;
-      font-family: 'Inter', sans-serif; transition: background 0.3s;
+      border: 1.5px solid var(--gold); border-radius: 50px;
+      padding: 14px 32px; min-width: 200px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      font-family: 'Inter', sans-serif; transition: all 0.3s;
       text-decoration: none;
     }
-    .btn-gold:hover { background: var(--gold-dark); }
-    .btn-gold .arrow {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-    }
+    .btn-gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
     .btn-gold-outline {
       background: transparent; color: var(--gold);
-      border: 1px solid var(--gold);
+      border: 1.5px solid var(--gold);
     }
     .btn-gold-outline:hover { background: var(--gold); color: var(--white); }
-    .btn-gold-outline .arrow { background: rgba(200,164,110,0.15); }
     .formation-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
     .formation-price {
       font-family: 'Cormorant Garamond', serif;
@@ -773,7 +764,7 @@
     <div class="hero-btns">
       <a class="btn-pill-light" href="https://barbarabeauty13.booksy.com/a/" target="_blank">
         Prendre rendez-vous
-        <span class="arrow">&#8599;</span>
+        
       </a>
       <a class="btn-pill-outline" href="#services">Voir les prestations</a>
     </div>
@@ -849,11 +840,11 @@
       <div class="formation-ctas">
         <a class="btn-gold" href="formation.html">
           Voir nos formations
-          <span class="arrow">&#8599;</span>
+          
         </a>
         <a class="btn-gold btn-gold-outline" href="#contact">
           Me contacter
-          <span class="arrow">&#8599;</span>
+          
         </a>
       </div>
     </div>
@@ -873,7 +864,7 @@
     <p class="about-body">Installée à Bouc-Bel-Air, je vous accueille dans un espace cosy et chaleureux pour sublimer votre regard. Forte de 9 ans d'expérience en extensions de cils, rehaussement et restructuration des sourcils, je mets tout mon savoir-faire au service de votre beauté. Chaque prestation est pensée sur mesure, adaptée à votre style et à la morphologie unique de votre regard.</p>
     <a class="btn-dark" href="https://barbarabeauty13.booksy.com/a/" target="_blank">
       Prendre rendez-vous
-      <span class="arrow">&#8599;</span>
+      
     </a>
     <div class="about-stats">
       <div>
@@ -1005,7 +996,7 @@
   <div style="text-align:center">
     <a class="btn-booksy" href="https://barbarabeauty13.booksy.com/a/" target="_blank">
       Réserver sur Booksy
-      <span class="arrow">&#8599;</span>
+      
     </a>
   </div>
 </section>
@@ -1069,28 +1060,28 @@
       <p class="contact-body">Retrouvez-moi à Bouc-Bel-Air ou contactez-moi directement. Réservez en ligne via Booksy pour un créneau garanti.</p>
       <div class="contact-list">
         <div class="contact-row">
-          <div class="cr-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div class="cr-icon">📍</div>
           <div>
             <div class="cr-label">Adresse</div>
             <div class="cr-value">58 route de Cabriès, 13320 Bouc-Bel-Air</div>
           </div>
         </div>
         <div class="contact-row">
-          <div class="cr-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="cr-icon">📞</div>
           <div>
             <div class="cr-label">Téléphone</div>
             <div class="cr-value"><a href="tel:0611193286">06.11.19.32.86</a></div>
           </div>
         </div>
         <div class="contact-row">
-          <div class="cr-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div class="cr-icon">✉️</div>
           <div>
             <div class="cr-label">Email</div>
             <div class="cr-value"><a href="mailto:barbarabeauty.formation@gmail.com">barbarabeauty.formation@gmail.com</a></div>
           </div>
         </div>
         <div class="contact-row">
-          <div class="cr-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+          <div class="cr-icon">📅</div>
           <div>
             <div class="cr-label">Réservation en ligne</div>
             <div class="cr-value"><a href="https://barbarabeauty13.booksy.com/a/" target="_blank">Booksy — Réserver maintenant</a></div>
