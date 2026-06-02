@@ -156,7 +156,7 @@ http.createServer(async (req, res) => {
   }
 
   // ── STATIC FILES ──
-  let filePath = path.join(__dirname, url.pathname === '/' ? 'serenique-lash.html' : decodeURIComponent(url.pathname));
+  let filePath = path.join(__dirname, url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname));
   const ext = path.extname(filePath);
   const type = mime[ext] || 'application/octet-stream';
 

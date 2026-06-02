@@ -1,5 +1,5 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/serenique-lash.html" }
+    { "source": "/serenique-lash.html", "destination": "/", "permanent": true }
   ]
 }
