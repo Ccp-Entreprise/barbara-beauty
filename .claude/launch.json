@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "lash-boutique",
+      "name": "barbara-beauty",
       "runtimeExecutable": "node",
       "runtimeArgs": ["server.js"],
       "port": 3000
