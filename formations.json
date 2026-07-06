@@ -1,0 +1,188 @@
+{
+  "formations": [
+    {
+      "id": "coaching-prive",
+      "level": "Coaching privé",
+      "levelClass": "coaching",
+      "title": "Coaching Privé",
+      "titleStyle": "fancy",
+      "note": "Réservé aux techniciennes formées par CilsJo",
+      "description": "Formation 100% personnalisée qui vous permet de travailler précisément sur vos lacunes et d'améliorer votre technique.",
+      "programTitle": "Au programme",
+      "program": [
+        "Choix des thèmes sur lesquels vous voulez travailler",
+        "Analyse de vos poses et de votre technique",
+        "Conseils pour effectuer vos poses parfaites, sur une bonne rétention et pour gagner en rapidité",
+        "Démonstration de la formatrice",
+        "Pratique sur modèle accompagnée"
+      ],
+      "prices": {
+        "standard": {
+          "amount": "389€",
+          "stripeUrl": "https://buy.stripe.com/8x2cN4eNi9JQe1zfVlaZi08",
+          "buttonLabel": "Réserver mon coaching"
+        }
+      },
+      "duration": "1 demi-journée",
+      "location": "Marseille | Bouc-Bel-Air"
+    },
+    {
+      "id": "cils-a-cils",
+      "level": "Formation initiale débutante",
+      "levelClass": "",
+      "title": "Formation<br><em>Cils à Cils</em>",
+      "titleStyle": "normal",
+      "note": "",
+      "description": "",
+      "programTitle": "Programme théorie & pratique",
+      "program": [
+        "Anatomie de l'œil et du cil naturel",
+        "Présentation de la technique cils à cils",
+        "Découverte du matériel et son utilisation",
+        "Les différents types d'extensions (courbures/diamètres/longueurs)",
+        "Tout savoir sur la colle d'extensions de cils",
+        "Protocole de la pose d'extension de cils",
+        "Stylisme / Mapping",
+        "Les contres indications",
+        "Réussir ses poses d'extensions de cils",
+        "Les règles d'hygiène et de sécurité",
+        "Exercice pratique sur support",
+        "Démonstration formatrice",
+        "Pratique sur modèle accompagnée"
+      ],
+      "prices": {
+        "standard": {
+          "amount": "599€",
+          "stripeUrl": "https://buy.stripe.com/cNi6oG9sYbRY4qZcJ9aZi07",
+          "buttonLabel": "Réserver"
+        },
+        "vip": {
+          "amount": "999€",
+          "stripeUrl": "https://buy.stripe.com/00wdR8ax2g8e0aJcJ9aZi06",
+          "buttonLabel": "Réserver en VIP"
+        }
+      },
+      "duration": "2 jours",
+      "location": "Marseille | Bouc-Bel-Air"
+    },
+    {
+      "id": "volume-russe",
+      "level": "Formation initiale débutante",
+      "levelClass": "",
+      "title": "Formation<br><em>Volume Russe</em>",
+      "titleStyle": "normal",
+      "note": "",
+      "description": "",
+      "programTitle": "Programme théorie & pratique",
+      "program": [
+        "Anatomie de l'œil et du cil naturel",
+        "Présentation de la technique volume russe",
+        "Découverte du matériel et son utilisation",
+        "Les différents types d'extensions (courbures/diamètres/longueurs)",
+        "Tout savoir sur la colle d'extensions de cils",
+        "Protocole de la pose d'extension de cils",
+        "Stylisme / Mapping",
+        "Les contres indications",
+        "Réussir ses poses d'extensions de cils",
+        "Les règles d'hygiène et de sécurité",
+        "Exercice pratique sur support",
+        "Démonstration formatrice",
+        "Pratique sur modèle accompagnée"
+      ],
+      "prices": {
+        "standard": {
+          "amount": "599€",
+          "stripeUrl": "https://buy.stripe.com/4gM00i20w09g6z7aB1aZi05",
+          "buttonLabel": "Réserver"
+        },
+        "vip": {
+          "amount": "999€",
+          "stripeUrl": "https://buy.stripe.com/aFa5kCbB6g8e5v3aB1aZi04",
+          "buttonLabel": "Réserver en VIP"
+        }
+      },
+      "duration": "2 jours",
+      "location": "Marseille | Bouc-Bel-Air"
+    },
+    {
+      "id": "volume-russe-expert",
+      "level": "Formation perfectionnement",
+      "levelClass": "expert",
+      "title": "Formation Volume Russe<br><em>Expert</em>",
+      "titleStyle": "normal",
+      "note": "",
+      "description": "",
+      "programTitle": "Programme théorie & pratique",
+      "program": [
+        "Augmenter sa rétention",
+        "Comprendre et choisir sa colle",
+        "Bien préparer les cils naturels",
+        "Top Line / Perfect Line",
+        "Perfect Fans",
+        "Le stylisme",
+        "Découvrir les courbures B, L, M et V",
+        "Technique de pose pour réussir ses effets",
+        "Entretien des extensions",
+        "Les allergies & les brûlures chimiques",
+        "Réussir ses poses d'extension de cils",
+        "Couleurs et tendance",
+        "Exercice pratique sur support",
+        "Démonstration formatrice",
+        "Pratique sur modèle accompagnée"
+      ],
+      "prices": {
+        "standard": {
+          "amount": "599€",
+          "stripeUrl": "https://buy.stripe.com/aFafZgeNi4pw9LjcJ9aZi03",
+          "buttonLabel": "Réserver"
+        },
+        "vip": {
+          "amount": "999€",
+          "stripeUrl": "https://buy.stripe.com/28E6oG8oUaNU0aJdNdaZi02",
+          "buttonLabel": "Réserver en VIP"
+        }
+      },
+      "duration": "2 jours",
+      "location": "Marseille | Bouc-Bel-Air"
+    },
+    {
+      "id": "2en1",
+      "level": "Formation initiale débutante",
+      "levelClass": "",
+      "title": "Formation 2en1<br><em>Cils à Cils & Volume Russe Préfaits</em>",
+      "titleStyle": "normal",
+      "note": "",
+      "description": "",
+      "programTitle": "Programme théorie & pratique",
+      "program": [
+        "Anatomie de l'œil et du cil naturel",
+        "Présentation de la technique cils à cils et volume russe préfaits",
+        "Découverte du matériel et son utilisation",
+        "Les différents types d'extensions (courbures/diamètres/longueurs)",
+        "Tout savoir sur la colle d'extensions de cils",
+        "Protocole de la pose d'extension de cils",
+        "Stylisme / Mapping",
+        "Les contres indications",
+        "Réussir ses poses d'extensions de cils",
+        "Les règles d'hygiène et de sécurité",
+        "Exercice pratique sur support",
+        "Démonstration formatrice",
+        "Pratique sur 2 modèles accompagnée"
+      ],
+      "prices": {
+        "standard": {
+          "amount": "999€",
+          "stripeUrl": "https://buy.stripe.com/6oUfZg6gM8FMg9HbF5aZi01",
+          "buttonLabel": "Réserver"
+        },
+        "vip": {
+          "amount": "1449€",
+          "stripeUrl": "https://buy.stripe.com/7sY14meNibRYg9H9wXaZi00",
+          "buttonLabel": "Réserver en VIP"
+        }
+      },
+      "duration": "3 jours",
+      "location": "Marseille | Bouc-Bel-Air"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "barbara-beauty",
+  "version": "1.0.0",
+  "description": "Site vitrine Barbara Beauty — Onglerie & Beauté du Regard",
+  "private": true,
+  "dependencies": {
+    "@vercel/blob": "^1.0.0"
+  }
+}

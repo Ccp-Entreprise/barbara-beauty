@@ -420,7 +420,9 @@
     <h2 class="section-title">Choisissez votre <em>formation</em></h2>
   </div>
 
-  <div class="formations-grid">
+  <div class="formations-grid" id="formations-grid">
+
+    <!-- Cartes chargées dynamiquement via /api/formations. Fallback ci-dessous. -->
 
     <!-- 1. Coaching Privé -->
     <div class="formation-card">
@@ -702,6 +704,84 @@
     <div class="footer-copy">&copy; 2025 Barbara Beauty — Tous droits réservés &nbsp;|&nbsp; <a href="/mentions-legales" style="color:rgba(255,255,255,0.25); text-decoration:none;">Mentions légales</a></div>
   </div>
 </footer>
+
+<script>
+  // ── Chargement dynamique des formations ──
+  const ICON_CLOCK = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+  const ICON_PIN = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>';
+
+  function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function allowBr(str) {
+    if (str == null) return '';
+    return escapeHtml(str).replace(/&lt;br&gt;/g, '<br>').replace(/&lt;em&gt;/g, '<em>').replace(/&lt;\/em&gt;/g, '</em>');
+  }
+
+  function renderFormationCard(f) {
+    const titleStyleAttr = f.titleStyle === 'fancy' ? ' style="font-family: \'Great Vibes\', cursive; font-size: 2.5rem;"' : '';
+    const levelClass = f.levelClass ? ' ' + f.levelClass : '';
+    const noteHtml = f.note ? `<div class="coaching-note">${escapeHtml(f.note)}</div>` : '';
+    const descHtml = f.description ? `<p style="font-size: 0.88rem; color: #555; line-height: 1.7; margin-bottom: 20px;">${escapeHtml(f.description)}</p>` : '';
+    const programItems = (f.program || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+    const std = f.prices && f.prices.standard ? f.prices.standard : null;
+    const vip = f.prices && f.prices.vip ? f.prices.vip : null;
+    const priceBlock = `
+      <div class="fc-price-block">
+        ${std ? `<div class="fc-price">${escapeHtml(std.amount)}</div>` : ''}
+        ${vip ? `<div class="fc-price-vip">VIP ${escapeHtml(vip.amount)}</div>` : ''}
+      </div>`;
+    let ctaHtml = '';
+    if (std && vip) {
+      ctaHtml = `
+        <div class="fc-cta-group">
+          <a class="fc-cta" href="${escapeHtml(std.stripeUrl)}" target="_blank">${escapeHtml(std.buttonLabel || 'Réserver')}</a>
+          <a class="fc-cta fc-cta-vip" href="${escapeHtml(vip.stripeUrl)}" target="_blank">${escapeHtml(vip.buttonLabel || 'Réserver en VIP')}</a>
+        </div>`;
+    } else if (std) {
+      ctaHtml = `<a class="fc-cta" href="${escapeHtml(std.stripeUrl)}" target="_blank">${escapeHtml(std.buttonLabel || 'Réserver')}</a>`;
+    }
+    return `
+      <div class="formation-card">
+        <div class="fc-header">
+          <div class="fc-level${levelClass}">${escapeHtml(f.level)}</div>
+          <h3 class="fc-title"${titleStyleAttr}>${allowBr(f.title)}</h3>
+        </div>
+        <div class="fc-body">
+          ${noteHtml}
+          ${descHtml}
+          <div class="fc-program-title">${escapeHtml(f.programTitle || 'Programme')}</div>
+          <ul class="fc-list">${programItems}</ul>
+        </div>
+        ${priceBlock}
+        <div class="fc-footer">
+          <div class="fc-info"><div class="fc-info-icon">${ICON_CLOCK}</div><div><strong>${escapeHtml(f.duration)}</strong></div></div>
+          <div class="fc-info"><div class="fc-info-icon">${ICON_PIN}</div><div><strong>${escapeHtml(f.location)}</strong></div></div>
+        </div>
+        ${ctaHtml}
+      </div>`;
+  }
+
+  async function loadFormations() {
+    try {
+      const res = await fetch('/api/formations', { cache: 'no-store' });
+      if (!res.ok) throw new Error('API failed');
+      const data = await res.json();
+      if (!data || !Array.isArray(data.formations)) throw new Error('Invalid data');
+      const grid = document.getElementById('formations-grid');
+      if (grid) {
+        grid.innerHTML = data.formations.map(renderFormationCard).join('');
+      }
+    } catch (err) {
+      console.warn('Chargement dynamique échoué, fallback sur le HTML statique.', err);
+      // Le contenu statique reste affiché en cas d'échec
+    }
+  }
+
+  loadFormations();
+</script>
 
 </body>
 </html>
