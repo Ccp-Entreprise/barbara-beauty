@@ -500,7 +500,9 @@ async function saveAll() {
         setTimeout(logout, 1500);
         return;
       }
-      throw new Error(result.error || 'Erreur');
+      const detail = result.detail ? ' — ' + result.detail : '';
+      console.error('Save error:', res.status, result);
+      throw new Error((result.error || 'Erreur') + detail);
     }
     toast('✓ Enregistré ! Les changements sont en ligne.', 'success');
     setTimeout(() => loadData(), 500);
