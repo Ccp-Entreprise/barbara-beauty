@@ -237,6 +237,55 @@
     }
     .fc-cta-vip:hover { background: var(--gold); color: var(--white); }
 
+    /* Dates disponibles */
+    .fc-dates {
+      margin: 0 32px 20px;
+      padding: 16px 20px;
+      background: rgba(184,149,106,0.06);
+      border-left: 2px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+    }
+    .fc-dates-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold-dark);
+      margin-bottom: 10px;
+    }
+    .fc-dates-list {
+      list-style: none; display: flex; flex-direction: column; gap: 6px;
+    }
+    .fc-dates-list li {
+      font-size: 0.82rem; color: #444; line-height: 1.4;
+      display: flex; gap: 8px; align-items: center;
+    }
+    .fc-dates-list li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* Bouton acompte */
+    .fc-deposit-wrap {
+      padding: 0 32px 32px;
+      margin-top: -8px;
+      text-align: center;
+    }
+    .fc-deposit {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; color: var(--muted);
+      border: 1px dashed var(--border-strong, #D4C9B8);
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 0.78rem; font-weight: 500;
+      text-decoration: none; letter-spacing: 0.3px;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .fc-deposit:hover {
+      color: var(--gold); border-color: var(--gold);
+      background: rgba(184,149,106,0.04);
+    }
+    .fc-deposit strong { color: var(--gold-dark); font-weight: 700; margin-left: 4px; }
+    .fc-deposit:hover strong { color: var(--gold-dark); }
+
     /* ── COACHING (special) ── */
     .coaching-note {
       font-size: 0.78rem; color: var(--terracotta); font-weight: 500;
@@ -754,6 +803,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else if (std) {
       ctaHtml = `<a class="fc-cta" href="${escapeHtml(std.stripeUrl)}" target="_blank">${escapeHtml(std.buttonLabel || 'Réserver')}</a>`;
     }
+
+    // Dates disponibles
+    const dates = Array.isArray(f.availableDates) ? f.availableDates.filter(d => d && String(d).trim()) : [];
+    const datesHtml = dates.length ? `
+      <div class="fc-dates">
+        <div class="fc-dates-title">Prochaines dates disponibles</div>
+        <ul class="fc-dates-list">
+          ${dates.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
+        </ul>
+      </div>` : '';
+
+    // Bouton acompte
+    const deposit = f.deposit && f.deposit.stripeUrl && f.deposit.stripeUrl.trim() ? f.deposit : null;
+    const depositHtml = deposit ? `
+      <div class="fc-deposit-wrap">
+        <a class="fc-deposit" href="${escapeHtml(deposit.stripeUrl)}" target="_blank">
+          <span>${escapeHtml(deposit.label || 'Payer un acompte')}${deposit.amount ? ' <strong>' + escapeHtml(deposit.amount) + '</strong>' : ''}</span>
+        </a>
+      </div>` : '';
+
     return `
       <div class="formation-card">
         <div class="fc-header">
@@ -767,11 +836,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <ul class="fc-list">${programItems}</ul>
         </div>
         ${priceBlock}
+        ${datesHtml}
         <div class="fc-footer">
           <div class="fc-info"><div class="fc-info-icon">${ICON_CLOCK}</div><div><strong>${escapeHtml(f.duration)}</strong></div></div>
           <div class="fc-info"><div class="fc-info-icon">${ICON_PIN}</div><div><strong>${escapeHtml(f.location)}</strong></div></div>
         </div>
         ${ctaHtml}
+        ${depositHtml}
       </div>`;
   }
 

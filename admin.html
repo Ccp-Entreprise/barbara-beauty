@@ -330,6 +330,8 @@ function renderCard(f, i) {
   const std = (f.prices && f.prices.standard) || {};
   const vip = (f.prices && f.prices.vip) || null;
   const programText = (f.program || []).join('\n');
+  const datesText = (Array.isArray(f.availableDates) ? f.availableDates : []).join('\n');
+  const dep = f.deposit || {};
   const hasVip = !!vip;
 
   return `
@@ -432,6 +434,33 @@ function renderCard(f, i) {
           </div>
         </div>
 
+        <div class="price-block">
+          <div class="price-block-title">Dates disponibles (visibles sur le site)</div>
+          <div class="field-hint" style="margin-bottom:12px">Une date par ligne. Tu peux ajouter des notes libres (ex. "22 juin 2025 — COMPLET" ou "6 juillet 2025 (3 places)").</div>
+          <div class="field">
+            <textarea data-field="availableDates" data-i="${i}" rows="6" placeholder="15 juin 2025&#10;22 juin 2025&#10;6 juillet 2025">${escapeAttr(datesText)}</textarea>
+          </div>
+        </div>
+
+        <div class="price-block">
+          <div class="price-block-title">Acompte (optionnel)</div>
+          <div class="field-hint" style="margin-bottom:12px">Payment Link Stripe pour payer un acompte. Laisse vide pour ne pas afficher ce bouton.</div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label">Montant</label>
+              <input type="text" data-field="deposit.amount" data-i="${i}" value="${escapeAttr(dep.amount || '')}" placeholder="150€" />
+            </div>
+            <div class="field">
+              <label class="field-label">Libellé du bouton</label>
+              <input type="text" data-field="deposit.label" data-i="${i}" value="${escapeAttr(dep.label || 'Payer un acompte')}" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Lien Stripe (acompte)</label>
+            <input type="url" data-field="deposit.stripeUrl" data-i="${i}" value="${escapeAttr(dep.stripeUrl || '')}" placeholder="https://buy.stripe.com/..." />
+          </div>
+        </div>
+
       </div>
     </div>`;
 }
@@ -450,6 +479,8 @@ function collectFromInputs() {
 
     if (field === 'program') {
       f.program = value.split('\n').map(s => s.trim()).filter(Boolean);
+    } else if (field === 'availableDates') {
+      f.availableDates = value.split('\n').map(s => s.trim()).filter(Boolean);
     } else if (field.startsWith('std.')) {
       const key = field.split('.')[1];
       if (!f.prices) f.prices = {};
@@ -460,6 +491,10 @@ function collectFromInputs() {
       if (!f.prices) f.prices = {};
       if (!f.prices.vip) f.prices.vip = {};
       f.prices.vip[key] = value;
+    } else if (field.startsWith('deposit.')) {
+      const key = field.split('.')[1];
+      if (!f.deposit) f.deposit = {};
+      f.deposit[key] = value;
     } else {
       f[field] = value;
     }
