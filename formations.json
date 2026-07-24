@@ -24,7 +24,7 @@
         }
       },
       "availableDates": [],
-      "deposit": { "amount": "", "stripeUrl": "", "label": "Payer un acompte" },
+      "deposit": { "amount": "", "stripeUrl": "", "label": "Réserver avec acompte" },
       "duration": "1 demi-journée",
       "location": "Marseille | Bouc-Bel-Air"
     },
@@ -65,7 +65,7 @@
         }
       },
       "availableDates": [],
-      "deposit": { "amount": "", "stripeUrl": "", "label": "Payer un acompte" },
+      "deposit": { "amount": "", "stripeUrl": "", "label": "Réserver avec acompte" },
       "duration": "2 jours",
       "location": "Marseille | Bouc-Bel-Air"
     },
@@ -106,7 +106,7 @@
         }
       },
       "availableDates": [],
-      "deposit": { "amount": "", "stripeUrl": "", "label": "Payer un acompte" },
+      "deposit": { "amount": "", "stripeUrl": "", "label": "Réserver avec acompte" },
       "duration": "2 jours",
       "location": "Marseille | Bouc-Bel-Air"
     },
@@ -149,7 +149,7 @@
         }
       },
       "availableDates": [],
-      "deposit": { "amount": "", "stripeUrl": "", "label": "Payer un acompte" },
+      "deposit": { "amount": "", "stripeUrl": "", "label": "Réserver avec acompte" },
       "duration": "2 jours",
       "location": "Marseille | Bouc-Bel-Air"
     },
@@ -190,7 +190,7 @@
         }
       },
       "availableDates": [],
-      "deposit": { "amount": "", "stripeUrl": "", "label": "Payer un acompte" },
+      "deposit": { "amount": "", "stripeUrl": "", "label": "Réserver avec acompte" },
       "duration": "3 jours",
       "location": "Marseille | Bouc-Bel-Air"
     }

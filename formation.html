@@ -819,7 +819,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const depositHtml = deposit ? `
       <div class="fc-deposit-wrap">
         <a class="fc-deposit" href="${escapeHtml(deposit.stripeUrl)}" target="_blank">
-          <span>${escapeHtml(deposit.label || 'Payer un acompte')}${deposit.amount ? ' <strong>' + escapeHtml(deposit.amount) + '</strong>' : ''}</span>
+          <span>${escapeHtml(deposit.label || 'Réserver avec acompte')}${deposit.amount ? ' <strong>' + escapeHtml(deposit.amount) + '</strong>' : ''}</span>
         </a>
       </div>` : '';
 
